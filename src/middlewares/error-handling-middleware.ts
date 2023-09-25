@@ -6,7 +6,7 @@ export function handleApplicationErrors(
   err: RequestError | ApplicationError | Error,
   _req: Request,
   res: Response,
-  next: NextFunction,
+  _next: NextFunction,
 ) {
   if (err.name === 'CannotEnrollBeforeStartDateError') {
     return res.status(httpStatus.BAD_REQUEST).send({
@@ -67,7 +67,7 @@ export function handleApplicationErrors(
   }
 
   if (err.name === 'UserTicketNotFoundError') {
-    return res.status(httpStatus.BAD_REQUEST).send(err.message);
+    return res.status(httpStatus.NOT_FOUND).send(err.message);
   }
 
   if (err.hasOwnProperty('status') && err.name === 'RequestError') {

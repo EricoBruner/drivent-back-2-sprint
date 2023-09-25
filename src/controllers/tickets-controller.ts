@@ -1,10 +1,10 @@
+import { Response } from 'express';
+import httpStatus from 'http-status';
 import { userEnrollmentNotFoundError } from '@/errors';
 import { userTicketNotFoundError } from '@/errors/user-ticket-not-found-error';
 import { AuthenticatedRequest } from '@/middlewares';
 import { enrollmentRepository } from '@/repositories';
 import { ticketsService } from '@/services';
-import { Response } from 'express';
-import httpStatus from 'http-status';
 
 export async function createTicket(req: AuthenticatedRequest, res: Response) {
   const ticketTypeId = req.body.ticketTypeId as number;

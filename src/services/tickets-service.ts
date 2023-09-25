@@ -1,8 +1,8 @@
+import { TicketType } from '@prisma/client';
 import { userEnrollmentNotFoundError } from '@/errors';
 import { ticketTypeIdNotFoundError } from '@/errors/ticket-type-id-not-found-error';
 import { TicketFormatCreate } from '@/protocols';
 import { enrollmentRepository, ticketsRepository } from '@/repositories';
-import { TicketType } from '@prisma/client';
 
 export async function createTicket(ticketTypeId: number, userId: number): Promise<TicketFormatCreate> {
   const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
