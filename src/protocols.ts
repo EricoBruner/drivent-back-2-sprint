@@ -26,3 +26,21 @@ export type AddressEnrollment = {
 export type CEP = {
   cep: string;
 };
+
+export type TicketFormatCreate = {
+  id: number;
+  status: string;
+  ticketTypeId: number;
+  enrollmentId: number;
+  TicketType: {
+    id: number;
+    name: string;
+    price: number;
+    isRemote: boolean;
+    includesHotel: boolean;
+    createdAt: Date;
+    updatedAt: Date;
+  };
+  createdAt: Date;
+  updatedAt: Date;
+};

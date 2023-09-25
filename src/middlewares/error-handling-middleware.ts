@@ -58,6 +58,18 @@ export function handleApplicationErrors(
     return res.status(httpStatus.BAD_REQUEST).send(err.message);
   }
 
+  if (err.name === 'TicketTypeIdNotFoundError') {
+    return res.status(httpStatus.BAD_REQUEST).send(err.message);
+  }
+
+  if (err.name === 'UserEnrollmentNotFoundError') {
+    return res.status(httpStatus.NOT_FOUND).send(err.message);
+  }
+
+  if (err.name === 'UserTicketNotFoundError') {
+    return res.status(httpStatus.BAD_REQUEST).send(err.message);
+  }
+
   if (err.hasOwnProperty('status') && err.name === 'RequestError') {
     return res.status((err as RequestError).status).send({
       message: err.message,
